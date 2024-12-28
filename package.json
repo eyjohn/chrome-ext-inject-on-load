@@ -1,0 +1,38 @@
+{
+  "name": "chrome-ext-inject-on-load",
+  "version": "0.0.1",
+  "description": "TypeScript module to enable chrome extensions to inject content scripts on extension load.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eyjohn/chrome-ext-inject-on-load"
+  },
+  "keywords": [
+    "typescript",
+    "chrome",
+    "extension",
+    "inject",
+    "content",
+    "scripts",
+    "startup",
+    "install",
+    "load"
+  ],
+  "author": "Evgeny Yakimov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eyjohn/chrome-ext-inject-on-load/issues"
+  },
+  "homepage": "https://github.com/eyjohn/chrome-ext-inject-on-load#readme",
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  },
+  "files": [
+    "dist"
+  ]
+}
