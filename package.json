@@ -6,7 +6,9 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ts-node node_modules/jasmine/bin/jasmine --config=jasmine.json",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "eslint"
   },
   "repository": {
     "type": "git",
@@ -30,7 +32,21 @@
   },
   "homepage": "https://github.com/eyjohn/chrome-ext-inject-on-load#readme",
   "devDependencies": {
-    "typescript": "^5.7.2"
+    "@eslint/js": "^9.17.0",
+    "@types/chrome": "^0.0.287",
+    "@types/jasmine": "^5.1.5",
+    "@types/serviceworker": "^0.0.108",
+    "@typescript-eslint/eslint-plugin": "^8.18.2",
+    "@typescript-eslint/parser": "^8.18.2",
+    "eslint": "^9.17.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.14.0",
+    "jasmine": "^5.5.0",
+    "prettier": "^3.4.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.2"
   },
   "files": [
     "dist"

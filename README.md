@@ -16,8 +16,8 @@ npm install chrome-ext-inject-on-load
 Import the module in your TypeScript file:
 
 ```typescript
-import { hello } from 'chrome-ext-inject-on-load';
-hello();
+import { register } from 'chrome-ext-inject-on-load';
+register(); // In background script, to be executed immediately.
 ```
 
 ## License
