@@ -1,6 +1,6 @@
 # chrome-ext-inject-on-load
 
-TypeScript module to enable Chrome extensions to inject content scripts on extension load.
+Module to enable Chrome extensions to inject content scripts on extension load.
 
 Chrome does not inject content scripts as defined in the manifest on loading
 events (install, upgrade, toggle off/on, reload), unlike Firefox, and may

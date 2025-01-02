@@ -1,7 +1,7 @@
 {
   "name": "chrome-ext-inject-on-load",
-  "version": "0.0.99",
-  "description": "TypeScript module to enable chrome extensions to inject content scripts on extension load.",
+  "version": "1.0.0",
+  "description": "Module to enable Chrome extensions to inject content scripts on extension load.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
