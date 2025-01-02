@@ -1,4 +1,5 @@
 # chrome-ext-inject-on-load
+
 TypeScript module to enable Chrome extensions to inject content scripts on extension load.
 
 Chrome does not inject content scripts as defined in the manifest on loading
@@ -22,28 +23,42 @@ Import the module in your TypeScript file:
 ```typescript
 import { registerContentScriptInjectOnLoad } from 'chrome-ext-inject-on-load';
 
-// Should be placed in top-level scope of background script.
-registerContentScriptInjectOnLoad(); 
+// Should be called when running background script.
+registerContentScriptInjectOnLoad();
 ```
+
+In your manifest file, make sure to include the permissions:
+
+```json
+{
+  "permissions": ["tabs", "scripting"],
+  "host_permissions": [
+    /* list of urls matching content scripts matches */
+  ]
+}
+```
+
+## Demo
+
+See [demo](demo/README.md) for an example extension and live test.
 
 ## How it works
 
 The module performs content script injection in several steps:
 
 1. **Activation Process**
-   - Binds to background service worker's `activate` event i.e. 'load'
-   - This event is fired only once whenever the extension is:
+
+   - Binds to background service worker's `activate` event i.e. 'load', which
+     fires once when extension is:
      - Installed
      - Updated
      - Toggled off/on
      - Reloaded (either in UI or programatically)
 
-2. **Manifest Reading**
-   - Reads `host_permissions` and `content_scripts` from manifest
-   - Validates URL patterns and permissions
+2. **Reads Manifest and Filters Tabs**
 
-3. **Permission & URL Matching**
-   - Upon activation, iterates over all `content_scripts` selects tabs based on:
+   - Upon activation, reads the manifest
+   - Iterates over all `content_scripts` selects tabs based on:
      - Matching the `matches` content script property
      - NOT matching the `exclude_matches` content script property
      - Matching the `host_permissions` extension property
@@ -51,11 +66,11 @@ The module performs content script injection in several steps:
      - Excludes unloaded tabs (which Chrome would inject on reload anyway)
      - **NOTE: Does not currently support `include_globs` or `exclude_globs`**
 
-4. **Injection**
-   - Iterates over every `content_scripts` entry and
-   - Injects CSS and JavaScript files
+3. **Injection**
+   - Iterates over every `content_scripts` entry and filtered tabs
+   - Injects CSS first and then JavaScript second
    - Respects `all_frames` and `world` content_script settings
-   - Waits for injection to complete before continuing
+   - Waits for injection to complete before continuing to next scripts
 
 ## License
 

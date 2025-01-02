@@ -6,7 +6,7 @@ import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   {
-    ignores: ['dist/**'],
+    ignores: ['dist/**', 'demo/dist/**'],
   },
   {
     languageOptions: {
